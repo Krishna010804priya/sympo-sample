@@ -3,6 +3,8 @@ const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
+const PORT = process.env.PORT || 3000;
+
 app.use(bodyParser.urlencoded({extended: true}));
 
 mongoose.connect("mongodb+srv://Krishnapriya:Harini123@cluster-sympo.ksa7g.mongodb.net/registrationDb");
@@ -28,6 +30,7 @@ app.post("/", function(req, res){
     res.redirect('/');
 })
 
-app.listen(3000, function(){
-    console.log("server is running on 3000");
-})
+
+app.listen(PORT, function () {
+    console.log(`Server is running on port ${PORT}`);
+});
