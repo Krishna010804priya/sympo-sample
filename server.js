@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const path = require("path");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -21,9 +22,11 @@ const sampleRegisterSchema = new mongoose.Schema({
 
 const Sample = mongoose.model("Register", sampleRegisterSchema);
 
+
 app.get("/", function(req, res) {
-    res.sendFile(__dirname + "/index.html");
+    res.sendFile(path.join(__dirname, "index.html"));
 });
+
 
 app.post("/", function(req, res){
     let newSample = new Sample({
